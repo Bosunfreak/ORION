@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>O.R.I.O.N.</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #050914;
+            color: #e8fbff;
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 900px;
+            max-width: 92vw;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+
+        /* =========================
+           O.R.I.O.N. AI CORE
+        ========================= */
+
+        .core {
+            width: 210px;
+            height: 210px;
+
+            margin: 0 auto 20px;
+
+            border: 3px solid #00e5ff;
+            border-radius: 50%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            position: relative;
+
+            box-shadow:
+                0 0 10px #00e5ff,
+                0 0 30px #00e5ff,
+                inset 0 0 25px rgba(0, 229, 255, 0.25);
+
+            animation: corePulse 3s infinite ease-in-out;
+        }
+
+
+        /* Binnenste cirkel */
+
+        .core-inner {
+            width: 95px;
+            height: 95px;
+
+            border-radius: 50%;
+
+            background: #00e5ff;
+
+            box-shadow:
+                0 0 10px #00e5ff,
+                0 0 25px #00e5ff,
+                0 0 50px #00e5ff;
+
+            animation: innerPulse 2s infinite ease-in-out;
+        }
+
+
+        /* Kleine ring */
+
+        .core-ring {
+            position: absolute;
+
+            width: 145px;
+            height: 145px;
+
+            border-radius: 50%;
+
+            border: 1px solid rgba(0, 229, 255, 0.6);
+
+            animation: ringRotate 8s linear infinite;
+        }
+
+
+        @keyframes corePulse {
+
+            0% {
+                transform: scale(1);
+
+                box-shadow:
+                    0 0 10px #00e5ff,
+                    0 0 30px #00e5ff,
+                    inset 0 0 25px rgba(0, 229, 255, 0.25);
+            }
+
+            50% {
+                transform: scale(1.04);
+
+                box-shadow:
+                    0 0 20px #00e5ff,
+                    0 0 50px #00e5ff,
+                    inset 0 0 35px rgba(0, 229, 255, 0.4);
+            }
+
+            100% {
+                transform: scale(1);
+
+                box-shadow:
+                    0 0 10px #00e5ff,
+                    0 0 30px #00e5ff,
+                    inset 0 0 25px rgba(0, 229, 255, 0.25);
+            }
+
+        }
+
+
+        @keyframes innerPulse {
+
+            0% {
+                transform: scale(0.9);
+                opacity: 0.8;
+            }
+
+            50% {
+                transform: scale(1.05);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(0.9);
+                opacity: 0.8;
+            }
+
+        }
+
+
+        @keyframes ringRotate {
+
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+
+        }
+
+
+        /* =========================
+           TITEL
+        ========================= */
+
+        h1 {
+            color: #00e5ff;
+
+            letter-spacing: 6px;
+
+            margin: 10px 0;
+
+            font-size: 30px;
+
+            text-shadow:
+                0 0 10px #00e5ff,
+                0 0 25px #00e5ff;
+        }
+
+
+        /* =========================
+           STATUS
+        ========================= */
+
+        .status {
+            color: #00e5ff;
+
+            font-size: 14px;
+
+            margin-bottom: 25px;
+
+            text-shadow:
+                0 0 8px #00e5ff;
+        }
+
+
+        /* =========================
+           CHAT
+        ========================= */
+
+        .chat {
+            width: 100%;
+
+            height: 320px;
+
+            background: #0a1020;
+
+            border: 1px solid #00e5ff;
+
+            padding: 20px;
+
+            text-align: left;
+
+            overflow-y: auto;
+
+            border-radius: 8px;
+
+            box-shadow:
+                0 0 10px rgba(0, 229, 255, 0.3),
+                inset 0 0 20px rgba(0, 229, 255, 0.05);
+
+            font-family: Consolas, monospace;
+
+            font-size: 15px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =========================
+           INPUT
+        ========================= */
+
+        .input-area {
+
+            margin-top: 15px;
+
+            display: flex;
+
+            gap: 10px;
+
+            width: 100%;
+        }
+
+
+        input {
+
+            flex: 1;
+
+            padding: 14px;
+
+            background: #111b2e;
+
+            border: 1px solid #00e5ff;
+
+            border-radius: 6px;
+
+            color: white;
+
+            font-size: 16px;
+
+            outline: none;
+
+            box-shadow:
+                0 0 8px rgba(0, 229, 255, 0.15);
+        }
+
+
+        input:focus {
+
+            box-shadow:
+                0 0 12px rgba(0, 229, 255, 0.5);
+        }
+
+
+        /* =========================
+           BUTTON
+        ========================= */
+
+        button {
+
+            padding: 14px 22px;
+
+            background: #111b2e;
+
+            border: 1px solid #00e5ff;
+
+            border-radius: 6px;
+
+            color: #00e5ff;
+
+            cursor: pointer;
+
+            font-weight: bold;
+
+            font-size: 15px;
+
+            transition: 0.2s;
+        }
+
+
+        button:hover {
+
+            background: #00e5ff;
+
+            color: #050914;
+
+            box-shadow:
+                0 0 15px #00e5ff;
+        }
+
+
+        /* =========================
+           MOBIEL
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            .container {
+                width: 95vw;
+            }
+
+            .core {
+                width: 170px;
+                height: 170px;
+            }
+
+            .core-inner {
+                width: 75px;
+                height: 75px;
+            }
+
+            .core-ring {
+                width: 115px;
+                height: 115px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .chat {
+                height: 350px;
+                font-size: 14px;
+            }
+
+            .input-area {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- O.R.I.O.N. AI CORE -->
+
+    <div class="core">
+
+        <div class="core-ring"></div>
+
+        <div class="core-inner"></div>
+
+    </div>
+
+
+    <!-- TITEL -->
+
+    <h1>O.R.I.O.N.</h1>
+
+
+    <!-- STATUS -->
+
+    <div class="status" id="status">
+        ● SYSTEM ONLINE
+    </div>
+
+
+    <!-- CHAT -->
+
+    <div
+        class="chat"
+        id="chat"
+    >
+
+        O.R.I.O.N. &gt; SYSTEM ONLINE.<br>
+
+        O.R.I.O.N. &gt; AI CORE INITIALIZING...<br>
+
+        O.R.I.O.N. &gt; Awaiting your command...
+
+    </div>
+
+
+    <!-- INPUT -->
+
+    <div class="input-area">
+
+        <input
+            id="message"
+            type="text"
+            placeholder="Typ een commando..."
+            autocomplete="off"
+        >
+
+        <button
+            onclick="sendMessage()"
+        >
+
+            SEND ➤
+
+        </button>
+
+    </div>
+
+
+</div>
+
+
+
+<script>
+
+
+/* ==========================================
+   O.R.I.O.N. AI
+========================================== */
+
+
+async function sendMessage() {
+
+
+    const input =
+        document.getElementById("message");
+
+
+    const chat =
+        document.getElementById("chat");
+
+
+    const status =
+        document.getElementById("status");
+
+
+    const message =
+        input.value.trim();
+
+
+    if (message === "") {
+
+        return;
+
+    }
+
+
+    /* =========================
+       USER MESSAGE
+    ========================= */
+
+    chat.innerHTML +=
+        "<br><br><b>JIJ &gt;</b> " +
+        escapeHTML(message);
+
+
+    input.value = "";
+
+
+    /* =========================
+       THINKING
+    ========================= */
+
+    chat.innerHTML +=
+        "<br><br><b>O.R.I.O.N. &gt;</b> " +
+        "<i>Ik denk na...</i>";
+
+
+    status.textContent =
+        "● O.R.I.O.N. IS THINKING...";
+
+
+    chat.scrollTop =
+        chat.scrollHeight;
+
+
+    try {
+
+
+        /* =========================
+           SEND TO PYTHON SERVER
+        ========================= */
+
+        const response =
+            await fetch(
+                "/ask",
+                {
+
+                    method: "POST",
+
+                    headers: {
+
+                        "Content-Type":
+                            "application/json"
+
+                    },
+
+                    body: JSON.stringify({
+
+                        message: message
+
+                    })
+
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        /* =========================
+           AI ANSWER
+        ========================= */
+
+        chat.innerHTML +=
+            "<br><br><b>O.R.I.O.N. &gt;</b> " +
+            escapeHTML(data.answer);
+
+
+        status.textContent =
+            "● SYSTEM ONLINE";
+
+
+    }
+
+    catch (error) {
+
+
+        console.error(error);
+
+
+        chat.innerHTML +=
+            "<br><br><b>O.R.I.O.N. &gt;</b> " +
+            "Verbinding met mijn AI-core mislukt.";
+
+
+        status.textContent =
+            "● AI CONNECTION ERROR";
+
+    }
+
+
+    chat.scrollTop =
+        chat.scrollHeight;
+
+}
+
+
+/* ==========================================
+   ENTER = SEND
+========================================== */
+
+
+document
+    .getElementById("message")
+    .addEventListener(
+        "keydown",
+        function(event) {
+
+            if (
+                event.key === "Enter"
+            ) {
+
+                event.preventDefault();
+
+                sendMessage();
+
+            }
+
+        }
+    );
+
+
+/* ==========================================
+   VEILIG TEKST WEERGEVEN
+========================================== */
+
+
+function escapeHTML(text) {
+
+    const div =
+        document.createElement("div");
+
+    div.textContent = text;
+
+    return div.innerHTML;
+
+}
+
+
+/* ==========================================
+   START
+========================================== */
+
+
+document
+    .getElementById("message")
+    .focus();
+
+
+</script>
+
+
+</body>
+</html>
